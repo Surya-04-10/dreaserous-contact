@@ -1,0 +1,16 @@
+﻿# Node modules
+node_modules/
+**/node_modules/
+
+# Angular / build output
+dist/
+frontend/dist/
+frontend/.angular/
+
+# OS / editor files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# environment files
+.env

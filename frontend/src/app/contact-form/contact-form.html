@@ -1,0 +1,40 @@
+<div class="contact-card">
+  <h2>Contact Us</h2>
+
+  <form [formGroup]="contactForm" (ngSubmit)="submitForm()" novalidate>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" placeholder="Your name" />
+    <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+      Name is required.
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" placeholder="you@example.com" />
+    <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+      <span *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</span>
+      <span *ngIf="contactForm.get('email')?.errors?.['email']">Enter a valid email.</span>
+    </div>
+
+    <label for="subject">Subject</label>
+    <select id="subject" formControlName="subject">
+      <option value="" disabled>Select a subject</option>
+      <option>General</option>
+      <option>Support</option>
+      <option>Partnership</option>
+      <option>Other</option>
+    </select>
+    <div class="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid">
+      Subject is required.
+    </div>
+
+    <label for="message">Message</label>
+    <textarea id="message" formControlName="message" rows="5" placeholder="Write your message..."></textarea>
+    <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+      Message must be at least 10 characters.
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid" class="send-btn">
+      Send
+    </button>
+  </form>
+</div>
